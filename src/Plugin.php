@@ -54,6 +54,11 @@ class Plugin {
 		$loader->add_requirement('modernbill_invoice', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill_invoice.php');
 		$loader->add_requirement('modernbill_invoices', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill_invoices.php');
 		$loader->add_requirement('modernbill_packages', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill_packages.php');
+		$loader->add_requirement('get_modernbill_client_by_id', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill.functions.inc.php');
+		$loader->add_requirement('get_modernbill_client_by_email', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill.functions.inc.php');
+		$loader->add_requirement('get_modernbill_clients', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill.functions.inc.php');
+		$loader->add_requirement('get_modernbill_invoices', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill.functions.inc.php');
+		$loader->add_requirement('get_modernbill_packages', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill.functions.inc.php');
 	}
 
 	/**
