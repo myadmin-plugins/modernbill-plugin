@@ -15,8 +15,10 @@
 		if ($GLOBALS['tf']->ima == 'admin' && has_acl('client_billing')) {
 			add_js('tablesorter');
 			if (isset($GLOBALS['tf']->variables->request['id'])) {
+				function_requirements('get_modernbill_client_by_id');
 				$client = get_modernbill_client_by_id($GLOBALS['tf']->variables->request['id']);
 			} else {
+				function_requirements('get_modernbill_clients');
 				$clients = get_modernbill_clients(
 					[
 					'client_id',
@@ -60,6 +62,7 @@
 				return;
 			}
 		} else {
+			function_requirements('get_modernbill_client_by_email');
 			$client = get_modernbill_client_by_email($data['account_lid']);
 		}
 		if (is_array($client)) {
