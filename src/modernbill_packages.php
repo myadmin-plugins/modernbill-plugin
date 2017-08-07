@@ -19,6 +19,7 @@
 		];
 		$data = $GLOBALS['tf']->accounts->data;
 		$table = new TFTable;
+		function_requirements('get_modernbill_packages');
 		$packages = get_modernbill_packages();
 		if (count($packages) > 0) {
 			$smarty = new TFSmarty;
