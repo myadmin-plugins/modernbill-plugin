@@ -1,8 +1,7 @@
 <?php
 	/**
 	 * ModernBill Related Functionality
-	 * Last Changed: $LastChangedDate: 2017-07-30 20:24:37 -0400 (Sun, 30 Jul 2017) $
-	 * @author detain
+	 * @author Joe Huss <detain@interserver.net>
 	 * @copyright 2017
 	 * @package MyAdmin
 	 * @category ModernBill
