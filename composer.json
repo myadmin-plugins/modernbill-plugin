@@ -34,7 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Detain\\MyAdminModernBill\\": "src\/"
+            "Detain\\MyAdminModernBill\\": "src/"
         }
     }
 }
