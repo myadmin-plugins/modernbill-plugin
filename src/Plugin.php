@@ -28,7 +28,7 @@ class Plugin {
 	public static function getHooks() {
 		return [
 			//'system.settings' => [__CLASS__, 'getSettings'],
-			//'ui.menu' => [__CLASS__, 'getMenu'],
+			'ui.menu' => [__CLASS__, 'getMenu'],
 			'function.requirements' => [__CLASS__, 'getRequirements']
 		];
 	}
@@ -39,9 +39,15 @@ class Plugin {
 	public static function getMenu(GenericEvent $event) {
 		$menu = $event->getSubject();
 		if ($GLOBALS['tf']->ima == 'admin') {
-			function_requirements('has_acl');
-					if (has_acl('client_billing'))
-							$menu->add_link('admin', 'choice=none.abuse_admin', '//my.interserver.net/bower_components/webhostinghub-glyphs-icons/icons/development-16/Black/icon-spam.png', 'ModernBill');
+			if (has_module_db('innertell')) {
+				function_requirements('has_acl');
+				if (has_acl('client_billing')) {
+					$menu->add_menu('billing', 'virtual', 'Legacy Billing (ModernBill)', '//my.interserver.net/bower_components/webhostinghub-glyphs-icons/icons/business-32/Black/icon-abacus.png');
+					$menu->add_link('virtual', 'choice=none.modernbill_client', '//my.interserver.net/bower_components/webhostinghub-glyphs-icons/icons/communication-32/Black/icon-businesscardalt.png', 'View Client Info');
+					$menu->add_link('virtual', 'choice=none.modernbill_packages', '//my.interserver.net/bower_components/webhostinghub-glyphs-icons/icons/business-32/Black/icon-tagalt-pricealt.png', 'View Packages');
+					$menu->add_link('virtual', 'choice=none.modernbill_invoices', '//my.interserver.net/bower_components/webhostinghub-glyphs-icons/icons/business-32/Black/icon-invoice.png', 'View Invoices');
+				}
+			}
 		}
 	}
 
