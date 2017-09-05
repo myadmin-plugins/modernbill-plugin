@@ -105,12 +105,10 @@ $phone
 		$bal = 0;
 		$table2->set_row_options('style="border-top: 1px solid #555555; color: #555555;"');
 		while ($db->next_record(MYSQL_ASSOC)) {
-			if ($db->Record['reg_payment'] != '') {
+			if ($db->Record['reg_payment'] != '')
 				$bal = bcadd($bal, $db->Record['reg_payment'], 2);
-			}
-			if ($db->Record['reg_bill'] != '') {
+			if ($db->Record['reg_bill'] != '')
 				$bal = bcsub($bal, $db->Record['reg_bill'], 2);
-			}
 
 			$table2->add_field(date('m/d/Y', $db->Record['reg_date']));
 			$table2->add_field($db->Record['client_id']);

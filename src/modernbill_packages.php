@@ -38,9 +38,8 @@
 				unset($package['client_id']);
 				if (!$title) {
 					$title = [];
-					foreach (array_keys($package) as $key) {
+					foreach (array_keys($package) as $key)
 						$title[] = $values[$key];
-					}
 					$smarty->assign('table_header', $title);
 					$title = true;
 				}

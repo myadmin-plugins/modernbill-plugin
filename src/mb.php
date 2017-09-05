@@ -5,9 +5,8 @@
  * @return string
  */
 function smartslashes($string) {
-		if (get_magic_quotes_gpc()) {
+		if (get_magic_quotes_gpc())
 			return $string;
-		}
 		return addslashes($string);
 	}
 
@@ -33,9 +32,8 @@ function my_array_shift(&$array) {
 		$array = $newArray;
 		asort($array);
 		reset($array);
-		if (is_array($toReturn)) {
+		if (is_array($toReturn))
 			return [1 => $toReturn];
-		}
 		return $toReturn;
 	}
 
@@ -63,99 +61,83 @@ function mb_functions($t = null) {
 		$retval = '4.4.1';
 		switch ($t) {
 			case 'action_functions':
-				if (function_exists('mb_action_functions')) {
+				if (function_exists('mb_action_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_action_functions());
 				return $retval;
 			case 'auth_functions':
-				if (function_exists('mb_auth_functions')) {
+				if (function_exists('mb_auth_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_auth_functions());
 				return $retval;
 			case 'cc_functions':
-				if (function_exists('mb_cc_functions')) {
+				if (function_exists('mb_cc_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_cc_functions());
 				return $retval;
 			case 'db_core_functions':
-				if (function_exists('mb_db_core_functions')) {
+				if (function_exists('mb_db_core_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_db_core_functions());
 				return $retval;
 			case 'db_functions':
-				if (function_exists('mb_db_functions')) {
+				if (function_exists('mb_db_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_db_functions());
 				return $retval;
 			case 'display_functions':
-				if (function_exists('mb_display_functions')) {
+				if (function_exists('mb_display_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_display_functions());
 				return $retval;
 			case 'email_functions':
-				if (function_exists('mb_email_functions')) {
+				if (function_exists('mb_email_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_email_functions());
 				return $retval;
 			case 'faq_functions':
-				if (function_exists('mb_faq_functions')) {
+				if (function_exists('mb_faq_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_faq_functions());
 				return $retval;
 			case 'idn_functions':
-				if (function_exists('mb_idn_functions')) {
+				if (function_exists('mb_idn_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_idn_functions());
 				return $retval;
 			case 'misc_functions':
-				if (function_exists('mb_misc_functions')) {
+				if (function_exists('mb_misc_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_misc_functions());
 				return $retval;
 			case 'order_functions':
-				if (function_exists('mb_order_functions')) {
+				if (function_exists('mb_order_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_order_functions());
 				return $retval;
 			case 'pw_functions':
-				if (function_exists('mb_pw_functions')) {
+				if (function_exists('mb_pw_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_pw_functions());
 				return $retval;
 			case 'select_functions':
-				if (function_exists('mb_select_functions')) {
+				if (function_exists('mb_select_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_select_functions());
 				return $retval;
 			case 'sql_select_functions':
-				if (function_exists('mb_sql_select_functions')) {
+				if (function_exists('mb_sql_select_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_sql_select_functions());
 				return $retval;
 			case 'validate_functions':
-				if (function_exists('mb_validate_functions')) {
+				if (function_exists('mb_validate_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_validate_functions());
 				return $retval;
 			case 'xml_functions':
-				if (function_exists('mb_xml_functions')) {
+				if (function_exists('mb_xml_functions'))
 					exit('F1');
-				}
 				$retval = sha1(mb_xml_functions());
 		}
 		return $retval;
@@ -182,9 +164,8 @@ function readmore_manual($flag) {
 		global $op;
 		global $failed_error;
 		if ($op == 'login' || $op == 'renew_key' || $op == 'fetch_key') {
-			if ($dbh) {
+			if ($dbh)
 				dbConnect();
-			}
 			$host = 'http://www.modernsupport.com';
 			$port = ':80';
 			$path = '/l/_api.php';
@@ -203,9 +184,8 @@ function readmore_manual($flag) {
 				@mail($to, $subject, @strip_tags($body), $from);
 			} else {
 				$buffer = null;
-				while (!$fp || feof($fp)) {
+				while (!$fp || feof($fp))
 					$buffer .= fgets($fp, 1024);
-				}
 				mb_ereg("\\{(.*)\\}", $buffer, $args);
 				$this_response = explode('|', $args[1]);
 				fclose($fp);
@@ -218,9 +198,8 @@ function readmore_manual($flag) {
 						header('location: index.php?op=logout');
 						break;
 					default:
-						if ($this_response[0] == 0 && ($op == 'renew_key' || $op == 'fetch_key')) {
+						if ($this_response[0] == 0 && ($op == 'renew_key' || $op == 'fetch_key'))
 							$failed_error = $this_response[1].' - '.$this_response[6];
-						}
 						$to = 'licensefail@modernbill.com';
 						$from = "From: licensefail@modernbill.com\n";
 						$subject = 'License Renewal Failed for '.$_SERVER['UNIQUE_DATA']['_email'].' '.$_SERVER['UNIQUE_DATA']['_license'];
@@ -244,9 +223,8 @@ function return_enckey() {
 		$ek_hash = str_replace('-----END LEKHASH-----', '', $ek_hash);
 		$ek_hash = preg_replace("'(\r|\n)'", '', $ek_hash);
 		list($md5data, $keydata) = explode(':', $ek_hash);
-		if ($md5data != md5($keydata.$lek_pw)) {
+		if ($md5data != md5($keydata.$lek_pw))
 			return null;
-		}
 		$enc_key = base64_decode(encrpyt($lek_pw, base64_decode($keydata), 1, 1));
 		return $enc_key;
 	}
@@ -261,15 +239,13 @@ function decode_key($keydata) {
 		$keydata = str_replace('-----END LICENSE-----', '', $keydata);
 		$keydata = preg_replace("'(\r|\n)'", '', $keydata);
 		list($md5data, $keydata) = explode('|', $keydata);
-		if ($md5data != md5($keydata.base64_encode($pwd).$pwd)) {
+		if ($md5data != md5($keydata.base64_encode($pwd).$pwd))
 			return -1;
-		}
 		$keydata = base64_decode($keydata);
 		$keydata = encrpyt(base64_encode($pwd).$pwd, $keydata, 1, 1);
 		list($keydata, $md5data) = explode(':', $keydata);
-		if ($md5data != md5($keydata)) {
+		if ($md5data != md5($keydata))
 			return -1;
-		}
 		$keydata = myadmin_unstringify(urldecode($keydata));
 		return $keydata;
 	}
@@ -345,9 +321,8 @@ function encrpyt($pwd = null, $data = null, $decrypt = null, $is_license = null)
 			case '3DES':
 				$iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_TripleDES, MCRYPT_MODE_ECB), MCRYPT_RAND);
 				$key = crc32($pwd);
-				if ($decrypt) {
+				if ($decrypt)
 					return mcrypt_decrypt(MCRYPT_TripleDES, $key, hex2bin_custom($data), MCRYPT_MODE_ECB, $iv);
-				}
 				return bin2hex(mcrypt_encrypt(MCRYPT_TripleDES, $key, $data, MCRYPT_MODE_ECB, $iv));
 		}
 		$data = $decrypt ? urldecode($data) : $data;
@@ -380,9 +355,8 @@ function encrpyt($pwd = null, $data = null, $decrypt = null, $is_license = null)
 			$cipherby = ord(mb_substr($data, $i, 1)) ^ $k;
 			$cipher .= chr($cipherby);
 		}
-		if ($decrypt) {
+		if ($decrypt)
 			return urldecode(urlencode($cipher));
-		}
 		return urlencode($cipher);
 	}
 
@@ -475,9 +449,8 @@ function dcc($client_id, $encryption_key, $md5 = false) {
 		global $dbh;
 		global $_PAYMENTS;
 		global $tamper_test;
-		if ($dbh) {
+		if ($dbh)
 			dbConnect();
-		}
 		if (sha1('36b18d99b63d16495acdd6a7d4df9531b8920e8b') != $tamper_test) {
 			echo "             <font color=\"RED\"><tt>\n             -----------[ERROR]------------<br />\n             Files have been tampered with.<br />\n             Please upload all files again.<br />\n             -----------[ERROR]------------<br />\n             3</tt></font>\n             ";
 			exit();
@@ -485,9 +458,8 @@ function dcc($client_id, $encryption_key, $md5 = false) {
 		$sql = 'SELECT client_stamp,billing_cc_num FROM client_info WHERE client_id = '.$client_id;
 		list($client_stamp, $billing_cc_num) = adodb_one_array($sql);
 		global $enc_type;
-		if ($enc_type == 'tripleDES') {
+		if ($enc_type == 'tripleDES')
 			$billing_cc_num = urldecode($billing_cc_num);
-		}
 		if ($_PAYMENTS['lek_on']) {
 			$encryption_key = return_enckey();
 		} else {
@@ -509,9 +481,8 @@ function ecc($client_id, $encryption_key = null, $billing_cc_num, $client_stamp 
 		global $_PAYMENTS;
 		global $tamper_test;
 		global $enc_type;
-		if ($dbh) {
+		if ($dbh)
 			dbConnect();
-		}
 		if (sha1('36b18d99b63d16495acdd6a7d4df9531b8920e8b') != $tamper_test) {
 			echo "             <font color=\"RED\"><tt>\n             -----------[ERROR]------------<br />\n             Files have been tampered with.<br />\n             Please upload all files again.<br />\n             -----------[ERROR]------------<br />\n             4</tt></font>\n             ";
 			exit();
@@ -527,9 +498,8 @@ function ecc($client_id, $encryption_key = null, $billing_cc_num, $client_stamp 
 		}
 		$ecc = encrpyt($client_stamp.$encryption_key, $billing_cc_num, 0, 0);
 		global $enc_type;
-		if ($enc_type == 'tripleDES') {
+		if ($enc_type == 'tripleDES')
 			$ecc = urlencode($ecc);
-		}
 		return $ecc;
 	}
 
@@ -556,9 +526,8 @@ function generic_select_menu($id, $name, $variable_name) {
 			}
 		}
 		$select_menu .= '</select>';
-		if ($details_view) {
+		if ($details_view)
 			return $thisvar;
-		}
 		return $select_menu;
 	}
 
@@ -615,9 +584,8 @@ function generic_select_menu($id, $name, $variable_name) {
 		@session_start();
 		@session_register('referrer_array', 'cycle_count', 'language', 'theme', 'uri', 'this_admin', 'this_user');
 	}
-	if ($_SESSION['this_admin']) {
+	if ($_SESSION['this_admin'])
 		ini_set('session.gc_maxlifetime', 7200);
-	}
 	require $DIR.'include/misc/heart/db_main_functions.inc.php';
 	$_sql = 'SELECT * FROM config ORDER BY config_type';
 	$_res = adodb_query($_sql, 'A');
@@ -649,9 +617,8 @@ function generic_select_menu($id, $name, $variable_name) {
 	$language = !isset($language) ? $default_language : $language;
 	$language = $new_language ? $new_language : $language;
 	$_SESSION[language] = $language = preg_replace('/[^a-zA-Z]/', '', $language);
-	if (!$signup_form && $argv[2] != 'cron') {
+	if (!$signup_form && $argv[2] != 'cron')
 		session_register('language');
-	}
 	$translation_file = file_exists($DIR.('include/translations/'.$language.'.trans.inc.php')) ? $language : $default_language;
 	require_once $DIR.('include/translations/'.$translation_file.'.trans.inc.php');
 	if ($db_table == 'config' || $tile == 'sysconfig') {
@@ -666,9 +633,8 @@ function generic_select_menu($id, $name, $variable_name) {
 		$_SESSION['use_this_theme'] = $default_theme;
 	}
 	$_SESSION['theme'] = preg_replace('/[^a-zA-Z]/', '', $_SESSION['use_this_theme']);
-	if (!$signup_form && $argv[2] != 'cron') {
+	if (!$signup_form && $argv[2] != 'cron')
 		session_register('theme');
-	}
 	if (!is_array(${'this_theme_'.$_SESSION['theme'].'_config'}) && !mb_ereg('insert_theme|logout', $op)) {
 		echo "<br><tt><font color=red>\n             [Error T] ".strip_tags($_SESSION['theme'])." is not a valid theme!\n             <br>\n             <br>\n             <br>\n             <b>Why do I see this error?</b>\n             <ol>\n             <li> Your browser has cached a theme that does not exist. Please refresh this page.\n             <br>\n             <br>\n             ___ OR ___\n             <br>\n             <br>\n             <li> The default ".strip_tags($_SESSION['theme'])." theme is not found in the database.\n             You may need to edit the config table manually to reset the default theme.\n             Please contact support for the sql query.\n             <br>\n             <br>\n             ___ OR ___\n             <br>\n             <br>\n             <li> The current ".strip_tags($_SESSION['theme'])." theme files are not found on your server.\n             If you created a new theme, you also need to upload or copy the supporting theme files here: include/config/themes/".strip_tags($theme)."/*\n             <br>\n             <br>\n             </font></tt>";
 		@session_destroy();
@@ -693,12 +659,10 @@ function generic_select_menu($id, $name, $variable_name) {
 	if (file_exists($DIR.'newkey.php')) {
 		echo '<FONT SIZE=2><pre>Loading new license key...';
 		$fd = fopen($DIR.'newkey.php', 'rb');
-		if ($fd) {
+		if ($fd)
 			exit('<font color=red>NOT OK (Can not read newkey.php file on your server.)</font>');
-		}
-		while (!feof($fd)) {
+		while (!feof($fd))
 			$licensekey .= fgets($fd, 4096);
-		}
 		fclose($fd);
 		echo "<font color=green>OK</font>\nValidating new license key...";
 		$MB_key_array = decode_key($licensekey);
@@ -771,21 +735,17 @@ function generic_select_menu($id, $name, $variable_name) {
 	$_SERVER['UNIQUE_DATA']['_expires'] = $_SERVER['UNIQUE_DATA']['ExpDate'];
 	$_SERVER['UNIQUE_DATA']['_id'] = $_SERVER['UNIQUE_DATA']['VerTier'];
 	// @codingStandardsIgnoreStart
-	if (defined('RegDomain') || defined('RegCompany') || defined('RegLicense') || defined('RegEmail') || defined('ExpDate') || defined('VerTier')) {
+	if (defined('RegDomain') || defined('RegCompany') || defined('RegLicense') || defined('RegEmail') || defined('ExpDate') || defined('VerTier'))
 		exit('<font color=red>[Error L3] Invalid license key. Please contact customer support.</font>');
-	}
-	if (file_exists($DIR.'include/misc/heart/db_core_functions.inc.php')) {
+	if (file_exists($DIR.'include/misc/heart/db_core_functions.inc.php'))
 		exit('<font color=red>[Error L4] Invalid license key. Please contact customer support.</font>');
-	}
 	define('RegDomain', $_SERVER['UNIQUE_DATA']['_domain']);
 	define('VerTier', $_SERVER['UNIQUE_DATA']['_id']);
 	require $DIR.'include/misc/heart/db_core_functions.inc.php';
-	if (function_exists('mb_db_core_functions')) {
+	if (function_exists('mb_db_core_functions'))
 		exit('<font color=red>[Error L5] Invalid license key. Please contact customer support.</font>');
-	}
-	if (!defined('RegDomain') || !defined('RegCompany') || !defined('RegLicense') || !defined('RegEmail') || !defined('ExpDate') || !defined('VerTier')) {
+	if (!defined('RegDomain') || !defined('RegCompany') || !defined('RegLicense') || !defined('RegEmail') || !defined('ExpDate') || !defined('VerTier'))
 		exit('<font color=red>[Error L6] Invalid license key. Please contact customer support.</font>');
-	}
 	switch ($_SERVER['UNIQUE_DATA']['_id']) {
 		case 41:
 			$exp_num = 0;
@@ -850,9 +810,8 @@ function generic_select_menu($id, $name, $variable_name) {
 	}
 	// @codingStandardsIgnoreEnd
 	$version .= $_SERVER['UNIQUE_DATA']['_id'];
-	if ($op == 'sid='.sha1(sha1('mb_vkey'.date('m/d/y')))) {
+	if ($op == 'sid='.sha1(sha1('mb_vkey'.date('m/d/y'))))
 		exit('<font size=1 color=blue><pre>'.$version . "\n (" . $_SERVER['UNIQUE_DATA']['_id'] . (")\n\n" . $licensekey.'<pre></font>'));
-	}
 	if ($op == 'sid='.sha1(sha1(sha1('mb_kkey'.date('m/d/y').'dttb06')))) {
 		$l_config_type = md5('license_4');
 		$_res1 = mysql_query_logger("DELETE FROM config WHERE config_type = '".$l_config_type."'");
@@ -871,9 +830,8 @@ function generic_select_menu($id, $name, $variable_name) {
 		$time_extended = $_SERVER['UNIQUE_DATA']['_expires'] + $grace_period2;
 		$try_connect = $time_left < $grace_period || $_SERVER['UNIQUE_DATA']['_expires'] < $l_today_stamp && $l_today_stamp < $time_extended ? true : false;
 		$force_connect = $op == 'renew_key' ? true : false;
-		if ($try_connect || $force_connect) {
+		if ($try_connect || $force_connect)
 			register_session();
-		}
 		if ($_SERVER['UNIQUE_DATA']['_expires'] < time()) {
 			if ($_SERVER['UNIQUE_DATA']['_id'] < 20) {
 				echo "<table width=90% align=left><tr><td bgcolor=FFFFFF><FONT COLOR=RED>\n\t\t\t\t\t[Error 2-".$_SERVER['UNIQUE_DATA']['_id']."] Demo license is expired.\n\t\t\t\t\tPlease purchase a leased or owned license <a href=http://www.modernbill.com/download/index.htm>here</a> to continue using ModernBill.\n\t\t\t\t  </FONT></td></tr></table>";
@@ -881,16 +839,14 @@ function generic_select_menu($id, $name, $variable_name) {
 				exit();
 			}
 			echo "<table width=90% align=left><tr><td bgcolor=FFFFFF><FONT FACE=ARIAL COLOR=RED SIZE=2>\n                    [Error 2-".$_SERVER['UNIQUE_DATA']['_id'].('] This license failed to auto-renew and has expired. Please <a href='.$https . "://{$secure_url}") . "index.php?op=renew_key>click here</a> to auto-renew your license now.\n                    </FONT>";
-			if (empty($failed_error)) {
+			if (empty($failed_error))
 				echo "<blockquote>\n                    <i><font color=blue>".$failed_error."</font></i>\n                    <br>\n                    <br>\n                    <FONT FACE=ARIAL COLOR=BLACK SIZE=2>\n\t\t\t\t\t<b>NOTICE:</b> Before contacting support, please verify the following:\n\t\t\t\t\t<ol>\n\t\t\t\t\t\t<li> Login to your <a href=http://www.modernsupport.com/mbleased/>Billing Account</a> and verify that the <b>status is active</b> and there is <b>no outstanding balance</b>.\n\t\t\t\t\t\t<li> Login to your <a href=http://www.modernsupport.com/modernbill/>Member's Area</a> and verify that your <b>account is registered</b> and you have a <b>license key on file</b> for this domain.\n                        <li> This installation has <b>internet access</b> and there is <b>no firewall blocking incoming port 80 connections</b> from our licensing server.\n                    </ol>\n\t\t\t\t\tOnce you have verified and/or corrected the issues listed above, please try to <a href={$https}://{$secure_url}"."index.php?op=renew_key>auto-renew</a> your license again.\n\t\t\t\t\t<br><br>\n\t\t\t\t\tIf you are still experiencing problems, please create a <a href=http://www.modernsupport.com/modernbill/index.php?type=ticket>priority support ticket</a>.\n                  </FONT>";
-			}
 			echo '</td></tr></table>';
 			exit();
 		}
 	}
-	if (30 <= $_SERVER['UNIQUE_DATA']['_id'] && $op == 'fetch_key') {
+	if (30 <= $_SERVER['UNIQUE_DATA']['_id'] && $op == 'fetch_key')
 		register_session();
-	}
 	$secure_install_url = parse_url('http://'.strtolower($secure_url));
 	$valid_domain = $secure_install_url['host'];
 	$RegDomain = strtolower($_SERVER['UNIQUE_DATA']['_domain']);
@@ -912,9 +868,8 @@ function generic_select_menu($id, $name, $variable_name) {
 	if (0 < $MaxClients) {
 		$remaining_clients = $MaxClients - $_TOTALS['client_count'];
 		if (0 < $remaining_clients) {
-			if ($remaining_clients < 10) {
+			if ($remaining_clients < 10)
 				$low_warning = "<table border=1 cellpadding=2>\n                             <tr>\n                              <td bgcolor=FFFFFF align=center>\n                                <font color=red>\n                                Warning:<br>".$remaining_clients." clients remaining!\n                                <hr size=1>\n                                You will be locked out if<br>you exceed your client quota.<Br><a href=http://www.modernbill.com/download/index.htm>Upgrade Now</a>\n                                </font>\n                              </td>\n                             </tr>\n                           </table>";
-			}
 		} elseif ($this_admin) {
 			echo '<br><tt><font color=red>NO MORE CLIENTS REMAINING. <a href=http://www.modernbill.com/download/index.htm>PLEASE UPGRADE YOUR LICENSE</a>.</font></tt>Once you have completed the steps above, you may <a href=index.php?op=renew_key>click here</a> to auto-renew your leased license key.';
 			@session_destroy();
@@ -950,12 +905,10 @@ function generic_select_menu($id, $name, $variable_name) {
 			require $DIR.('include/misc/'.$_dir.'/mod_config.php');
 			$module_is_approved = true;
 			if ($module_is_approved) {
-				if (($mod_enabled || $base_module_enabled || $include_override) && file_exists($DIR.('include/misc/'.$_dir.'/mod_functions.inc.php'))) {
+				if (($mod_enabled || $base_module_enabled || $include_override) && file_exists($DIR.('include/misc/'.$_dir.'/mod_functions.inc.php')))
 					include_once $DIR.('include/misc/'.$_dir.'/mod_functions.inc.php');
-				}
-				if ($module_is_approved) {
+				if ($module_is_approved)
 					$installed_modules[] = $_dir;
-				}
 			}
 		}
 		$mod_enabled = $base_module_enabled = $server_id = $registrar_id = $include_override = null;

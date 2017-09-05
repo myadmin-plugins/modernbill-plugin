@@ -47,9 +47,8 @@
 				unset($invoice['client_id']);
 				if (!$title) {
 					$title = [];
-					foreach (array_keys($invoice) as $key) {
+					foreach (array_keys($invoice) as $key)
 						$title[] = ucwords(str_replace('_', ' ', $key));
-					}
 					$smarty->assign('table_header', $title);
 					$title = true;
 				}

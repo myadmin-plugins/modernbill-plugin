@@ -49,9 +49,8 @@
 					unset($client['client_id']);
 					if (!$title) {
 						$title = [];
-						foreach (array_keys($client) as $key) {
+						foreach (array_keys($client) as $key)
 							$title[] = $values[$key];
-						}
 						$smarty->assign('table_header', $title);
 						$title = true;
 					}

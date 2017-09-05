@@ -50,19 +50,16 @@
 	 * @return array an array of clients
 	 */
 	function get_modernbill_clients($fields = false) {
-		if ($fields === false) {
+		if ($fields === false)
 			$fields = [];
-		}
-		if (count($fields) == 0) {
+		if (count($fields) == 0)
 			$fields[] = '*';
-		}
 		$db = clone $GLOBALS['mb_dbh'];
 		$db->query('select '.implode(', ', $fields).' from client_info', __LINE__, __FILE__);
 		$clients = [];
 		if ($db->num_rows() > 0) {
-			while ($db->next_record(MYSQL_ASSOC)) {
+			while ($db->next_record(MYSQL_ASSOC))
 				$clients[] = $db->Record;
-			}
 		}
 		return $clients;
 	}
@@ -113,9 +110,8 @@ client_info.client_email='" . $db->real_escape($data['account_lid']) . "'";
 		//$query .= ' limit 100';
 		$db->query($query, __LINE__, __FILE__);
 		$results = [];
-		while ($db->next_record(MYSQL_ASSOC)) {
+		while ($db->next_record(MYSQL_ASSOC))
 			$results[] = $db->Record;
-		}
 		return $results;
 	}
 
@@ -163,8 +159,7 @@ WHERE
 		}
 		$db->query($query, __LINE__, __FILE__);
 		$results = [];
-		while ($db->next_record(MYSQL_ASSOC)) {
+		while ($db->next_record(MYSQL_ASSOC))
 			$results[] = $db->Record;
-		}
 		return $results;
 	}
