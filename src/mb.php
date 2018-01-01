@@ -554,9 +554,9 @@ function generic_select_menu($id, $name, $variable_name) {
 		$host = gethostbyaddr($ip);
 		$url = $HTTP_SERVER_VARS['HTTP_HOST'].$HTTP_SERVER_VARS['REQUEST_URI'];
 		$admin = $SERVER_ADMIN ? $SERVER_ADMIN : 'security@modernbill.com';
-		$body = "IP:\t".$ip."\nHOST:\t{$host}\nURL:\t{$url}\nVER:\t{$version}\nTIME:\t".date('Y/m/d: h:i:s') . "\n";
+		$body = "IP:\t".$ip."\nHOST:\t{$host}\nURL:\t{$url}\nVER:\t{$version}\nTIME:\t".date('Y/m/d: h:i:s').PHP_EOL;
 		@mail($admin, 'Possible breakin attempt.', $body, @'From: '.$admin . "\r\n");
-		echo str_repeat(' ', 300) . "\n";
+		echo str_repeat(' ', 300).PHP_EOL;
 		flush();
 		echo ' <html><head><body><center><h3><tt><b><font color=RED>Security violation from: ';
 		echo $ip;
