@@ -38,7 +38,7 @@ Suite 100<br>
 Secaucus, NJ 07094<br>
 Phone: 877-566-8398', 'l');
 		$table->set_col_options('style="padding-left: 0px;"');
-		$table->add_field('<a href="'.$pp_url.'" target=_blank><img src="https://www.paypal.com/images/lgo/pp3.gif" border=0 alt=""></a>');
+		$table->add_field('<a href="'.$pp_url.'" target=_blank><img src="https://www.paypal.com/images/lgo/pp3.gif" border=0></a>');
 		$table->add_row();
 		$table->set_colspan(2);
 		$table->set_col_options('style="padding-left: 20px;padding-right: 20px;"');
