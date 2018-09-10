@@ -6,7 +6,8 @@
  * @throws \Exception
  * @throws \SmartyException
  */
-	function modernbill_packages() {
+	function modernbill_packages()
+	{
 		add_js('tablesorter');
 		page_title('ModernBill Client Package Information');
 		function_requirements('has_acl');
@@ -38,8 +39,9 @@
 				unset($package['client_id']);
 				if (!$title) {
 					$title = [];
-					foreach (array_keys($package) as $key)
+					foreach (array_keys($package) as $key) {
 						$title[] = $values[$key];
+					}
 					$smarty->assign('table_header', $title);
 					$title = true;
 				}
@@ -47,7 +49,6 @@
 			}
 			$smarty->assign('table_rows', $rows);
 			add_output($smarty->fetch('tablesorter/tablesorter.tpl'));
-
 		} else {
 			add_output('No Packages Found');
 		}

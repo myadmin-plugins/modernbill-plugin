@@ -1,14 +1,16 @@
 <?php
 
-	function modernbill_invoice() {
+	function modernbill_invoice()
+	{
 		$db = get_module_db('mb');
 		$invoice = (int)$GLOBALS['tf']->variables->request['id'];
 		$data = $GLOBALS['tf']->accounts->data;
 		function_requirements('has_acl');
-		if ($GLOBALS['tf']->ima == 'admin' && has_acl('client_billing'))
+		if ($GLOBALS['tf']->ima == 'admin' && has_acl('client_billing')) {
 			$db->query("select * from client_invoice left join client_info on client_invoice.client_id=client_info.client_id where invoice_id=$invoice");
-		else
+		} else {
 			$db->query("select * from client_invoice left join client_info on client_invoice.client_id=client_info.client_id where invoice_id=$invoice and  client_info.client_email='" . $db->real_escape($data['account_lid']) . "'");
+		}
 		if ($db->num_rows() == 0) {
 			add_output('No matching invoice found or you do not have permission to view this invoice.');
 			return;
@@ -105,10 +107,12 @@ $phone
 		$bal = 0;
 		$table2->set_row_options('style="border-top: 1px solid #555555; color: #555555;"');
 		while ($db->next_record(MYSQL_ASSOC)) {
-			if ($db->Record['reg_payment'] != '')
+			if ($db->Record['reg_payment'] != '') {
 				$bal = bcadd($bal, $db->Record['reg_payment'], 2);
-			if ($db->Record['reg_bill'] != '')
+			}
+			if ($db->Record['reg_bill'] != '') {
 				$bal = bcsub($bal, $db->Record['reg_bill'], 2);
+			}
 
 			$table2->add_field(date('m/d/Y', $db->Record['reg_date']));
 			$table2->add_field($db->Record['client_id']);

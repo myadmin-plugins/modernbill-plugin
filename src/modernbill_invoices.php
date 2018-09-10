@@ -6,7 +6,8 @@
  * @throws \Exception
  * @throws \SmartyException
  */
-	function modernbill_invoices() {
+	function modernbill_invoices()
+	{
 		add_js('tablesorter');
 		page_title('ModernBill Client Invoice Information');
 		add_output(render_form('modernbill_invoice_list'));
@@ -47,8 +48,9 @@
 				unset($invoice['client_id']);
 				if (!$title) {
 					$title = [];
-					foreach (array_keys($invoice) as $key)
+					foreach (array_keys($invoice) as $key) {
 						$title[] = ucwords(str_replace('_', ' ', $key));
+					}
 					$smarty->assign('table_header', $title);
 					$title = true;
 				}
@@ -56,7 +58,6 @@
 			}
 			$smarty->assign('table_rows', $rows);
 			add_output($smarty->fetch('tablesorter/tablesorter.tpl'));
-
 		} else {
 			add_output('No Invoices Found');
 		}

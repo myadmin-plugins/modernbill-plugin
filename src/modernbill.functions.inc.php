@@ -14,7 +14,8 @@
 	 * @param integer $id the ID of the modernbill client to get
 	 * @return false|array returns false if no client found or the array of client info
 	 */
-	function get_modernbill_client_by_id($id) {
+	function get_modernbill_client_by_id($id)
+	{
 		$id = (int)$id;
 		$db = get_module_db('mb');
 		$db->query("select * from client_info where client_id=$id", __LINE__, __FILE__);
@@ -32,7 +33,8 @@
 	 * @param string $email the email of the modernbill client to get
 	 * @return false|array returns false if no client found or the array of client info
 	 */
-	function get_modernbill_client_by_email($email) {
+	function get_modernbill_client_by_email($email)
+	{
 		$db = get_module_db('mb');
 		$db->query("select * from client_info where client_email='" . $db->real_escape($email) . "'", __LINE__, __FILE__);
 		if ($db->num_rows() > 0) {
@@ -49,17 +51,21 @@
 	 * @internal param array $array of fields you want returned, or leave blank for all
 	 * @return array an array of clients
 	 */
-	function get_modernbill_clients($fields = false) {
-		if ($fields === false)
+	function get_modernbill_clients($fields = false)
+	{
+		if ($fields === false) {
 			$fields = [];
-		if (count($fields) == 0)
+		}
+		if (count($fields) == 0) {
 			$fields[] = '*';
+		}
 		$db = clone $GLOBALS['mb_dbh'];
 		$db->query('select '.implode(', ', $fields).' from client_info', __LINE__, __FILE__);
 		$clients = [];
 		if ($db->num_rows() > 0) {
-			while ($db->next_record(MYSQL_ASSOC))
+			while ($db->next_record(MYSQL_ASSOC)) {
 				$clients[] = $db->Record;
+			}
 		}
 		return $clients;
 	}
@@ -70,7 +76,8 @@
 	 *
 	 * @return array an array of invoices
 	 */
-	function get_modernbill_invoices() {
+	function get_modernbill_invoices()
+	{
 		$db = get_module_db('mb');
 		$data = $GLOBALS['tf']->accounts->data;
 		function_requirements('has_acl');
@@ -110,8 +117,9 @@ client_info.client_email='" . $db->real_escape($data['account_lid']) . "'";
 		//$query .= ' limit 100';
 		$db->query($query, __LINE__, __FILE__);
 		$results = [];
-		while ($db->next_record(MYSQL_ASSOC))
+		while ($db->next_record(MYSQL_ASSOC)) {
 			$results[] = $db->Record;
+		}
 		return $results;
 	}
 
@@ -121,7 +129,8 @@ client_info.client_email='" . $db->real_escape($data['account_lid']) . "'";
 	 *
 	 * @return array an array of modernbill packages
 	 */
-	function get_modernbill_packages() {
+	function get_modernbill_packages()
+	{
 		$db = get_module_db('mb');
 		$data = $GLOBALS['tf']->accounts->data;
 		function_requirements('has_acl');
@@ -159,7 +168,8 @@ WHERE
 		}
 		$db->query($query, __LINE__, __FILE__);
 		$results = [];
-		while ($db->next_record(MYSQL_ASSOC))
+		while ($db->next_record(MYSQL_ASSOC)) {
 			$results[] = $db->Record;
+		}
 		return $results;
 	}

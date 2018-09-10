@@ -6,7 +6,8 @@
  * @throws \Exception
  * @throws \SmartyException
  */
-	function modernbill_client() {
+	function modernbill_client()
+	{
 		page_title('ModernBill Client Information');
 		$db = get_module_db('mb');
 		$data = $GLOBALS['tf']->accounts->data;
@@ -49,8 +50,9 @@
 					unset($client['client_id']);
 					if (!$title) {
 						$title = [];
-						foreach (array_keys($client) as $key)
+						foreach (array_keys($client) as $key) {
 							$title[] = $values[$key];
+						}
 						$smarty->assign('table_header', $title);
 						$title = true;
 					}
@@ -103,7 +105,7 @@
 			$table->add_field($client['client_phone2']);
 			$table->add_row();
 			add_output($table->get_table());
-			//echo '<pre>';
+		//echo '<pre>';
 			//print_r($client);
 		} else {
 			add_output('No ModernBill Client Information Found');
