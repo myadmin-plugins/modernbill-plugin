@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/myadmin-modernbill-plugin.iml" filepath="$PROJECT_DIR$/.idea/myadmin-modernbill-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modernbill-plugin.iml" filepath="$PROJECT_DIR$/.idea/modernbill-plugin.iml" />
     </modules>
   </component>
 </project>
