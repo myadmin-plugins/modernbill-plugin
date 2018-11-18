@@ -46,9 +46,9 @@ class Plugin
 				function_requirements('has_acl');
 				if (has_acl('client_billing')) {
 					$menu->add_menu('billing', 'virtual', 'Legacy Billing (ModernBill)', '/lib/webhostinghub-glyphs-icons/icons/business-32/Black/icon-abacus.png');
-					$menu->add_link('virtual', 'choice=none.modernbill_client', '/lib/webhostinghub-glyphs-icons/icons/communication-32/Black/icon-businesscardalt.png', __('View Client Info'));
-					$menu->add_link('virtual', 'choice=none.modernbill_packages', '/lib/webhostinghub-glyphs-icons/icons/business-32/Black/icon-tagalt-pricealt.png', __('View Packages'));
-					$menu->add_link('virtual', 'choice=none.modernbill_invoices', '/lib/webhostinghub-glyphs-icons/icons/business-32/Black/icon-invoice.png', __('View Invoices'));
+					$menu->add_link('virtual', 'choice=none.modernbill_client', '/lib/webhostinghub-glyphs-icons/icons/communication-32/Black/icon-businesscardalt.png', _('View Client Info'));
+					$menu->add_link('virtual', 'choice=none.modernbill_packages', '/lib/webhostinghub-glyphs-icons/icons/business-32/Black/icon-tagalt-pricealt.png', _('View Packages'));
+					$menu->add_link('virtual', 'choice=none.modernbill_invoices', '/lib/webhostinghub-glyphs-icons/icons/business-32/Black/icon-invoice.png', _('View Invoices'));
 				}
 			}
 		}
@@ -83,14 +83,14 @@ class Plugin
          * @var \MyAdmin\Settings $settings
          **/
         $settings = $event->getSubject();
-		$settings->add_radio_setting(__('Billing'), __('ModernBill'), 'paypal_enable', __('Enable ModernBill'), __('Enable ModernBill'), PAYPAL_ENABLE, [true, false], ['Enabled', 'Disabled']);
-		$settings->add_radio_setting(__('Billing'), __('ModernBill'), 'paypal_digitalgoods_enable', __('Enable Digital Goods'), __('Enable Digital Goods'), PAYPAL_DIGITALGOODS_ENABLE, [true, false], ['Enabled', 'Disabled']);
-		$settings->add_text_setting(__('Billing'), __('ModernBill'), 'paypal_email', __('Login / Email '), __('Login / Email '), (defined('PAYPAL_EMAIL') ? PAYPAL_EMAIL : ''));
-		$settings->add_text_setting(__('Billing'), __('ModernBill'), 'paypal_api_username', __('API Username'), __('API Username'), (defined('PAYPAL_API_USERNAME') ? PAYPAL_API_USERNAME : ''));
-		$settings->add_text_setting(__('Billing'), __('ModernBill'), 'paypal_api_password', __('API Password'), __('API Password'), (defined('PAYPAL_API_PASSWORD') ? PAYPAL_API_PASSWORD : ''));
-		$settings->add_text_setting(__('Billing'), __('ModernBill'), 'paypal_api_signature', __('API Signature'), __('API Signature'), (defined('PAYPAL_API_SIGNATURE') ? PAYPAL_API_SIGNATURE : ''));
-		$settings->add_text_setting(__('Billing'), __('ModernBill'), 'paypal_sandbox_api_username', __('Sandbox API Username'), __('Sandbox API Username'), (defined('PAYPAL_SANDBOX_API_USERNAME') ? PAYPAL_SANDBOX_API_USERNAME : ''));
-		$settings->add_text_setting(__('Billing'), __('ModernBill'), 'paypal_sandbox_api_password', __('Sandbox API Password'), __('Sandbox API Password'), (defined('PAYPAL_SANDBOX_API_PASSWORD') ? PAYPAL_SANDBOX_API_PASSWORD : ''));
-		$settings->add_text_setting(__('Billing'), __('ModernBill'), 'paypal_sandbox_api_signature', __('Sandbox API Signature'), __('Sandbox API Signature'), (defined('PAYPAL_SANDBOX_API_SIGNATURE') ? PAYPAL_SANDBOX_API_SIGNATURE : ''));
+		$settings->add_radio_setting(_('Billing'), _('ModernBill'), 'paypal_enable', _('Enable ModernBill'), _('Enable ModernBill'), PAYPAL_ENABLE, [true, false], ['Enabled', 'Disabled']);
+		$settings->add_radio_setting(_('Billing'), _('ModernBill'), 'paypal_digitalgoods_enable', _('Enable Digital Goods'), _('Enable Digital Goods'), PAYPAL_DIGITALGOODS_ENABLE, [true, false], ['Enabled', 'Disabled']);
+		$settings->add_text_setting(_('Billing'), _('ModernBill'), 'paypal_email', _('Login / Email '), _('Login / Email '), (defined('PAYPAL_EMAIL') ? PAYPAL_EMAIL : ''));
+		$settings->add_text_setting(_('Billing'), _('ModernBill'), 'paypal_api_username', _('API Username'), _('API Username'), (defined('PAYPAL_API_USERNAME') ? PAYPAL_API_USERNAME : ''));
+		$settings->add_text_setting(_('Billing'), _('ModernBill'), 'paypal_api_password', _('API Password'), _('API Password'), (defined('PAYPAL_API_PASSWORD') ? PAYPAL_API_PASSWORD : ''));
+		$settings->add_text_setting(_('Billing'), _('ModernBill'), 'paypal_api_signature', _('API Signature'), _('API Signature'), (defined('PAYPAL_API_SIGNATURE') ? PAYPAL_API_SIGNATURE : ''));
+		$settings->add_text_setting(_('Billing'), _('ModernBill'), 'paypal_sandbox_api_username', _('Sandbox API Username'), _('Sandbox API Username'), (defined('PAYPAL_SANDBOX_API_USERNAME') ? PAYPAL_SANDBOX_API_USERNAME : ''));
+		$settings->add_text_setting(_('Billing'), _('ModernBill'), 'paypal_sandbox_api_password', _('Sandbox API Password'), _('Sandbox API Password'), (defined('PAYPAL_SANDBOX_API_PASSWORD') ? PAYPAL_SANDBOX_API_PASSWORD : ''));
+		$settings->add_text_setting(_('Billing'), _('ModernBill'), 'paypal_sandbox_api_signature', _('Sandbox API Signature'), _('Sandbox API Signature'), (defined('PAYPAL_SANDBOX_API_SIGNATURE') ? PAYPAL_SANDBOX_API_SIGNATURE : ''));
 	}
 }
