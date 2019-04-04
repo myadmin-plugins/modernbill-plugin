@@ -293,7 +293,7 @@ function decode_key1($keydata)
 	list($md5data1, $keydata1) = explode('|', $keydata);
 	$keydata2 = str_replace($md5data1.'|'.$keydata1.'|', '', $keydata);
 	$obj = new mblg(implode(
-							[
+		[
 									'W', '+', 'd', 'F', 'p', '#', '-', 'q', 'g', 'B', '%', '~', 'I', 'M', 'a', 'r', 'L', '4', 'x', ':', '^', 'u', '}', 'U', '[', 'k', 'R', 'G', 'h', '5', 'l', 'A', '{', 't', 'f', '1', 'K', 'H', 'J', ')', 'v', 'N', 'T', '&', ';', 'n', 'S', ']', 'b', 'Z', 'z', 'Y',
 									'o',
 									'C',
@@ -422,12 +422,14 @@ function secure_access($user_type, $tamper_test, $param1 = null, $param2 = null)
 			} else {
 				return;
 			}
+			// no break
 			case 'all':
 				if (!testlogin()) {
 					break;
 				} else {
 					return;
 				}
+				// no break
 			case 'cron':
 				return;
 			case 'user':
@@ -462,12 +464,14 @@ function sca($type = 'admin')
 			} else {
 				return;
 			}
+			// no break
 			case 'all':
 				if (!testlogin()) {
 					break;
 				} else {
 					return;
 				}
+				// no break
 			case 'cron':
 				return;
 			case 'user':

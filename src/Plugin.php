@@ -59,10 +59,10 @@ class Plugin
 	 */
 	public static function getRequirements(GenericEvent $event)
 	{
-        /**
-         * @var \MyAdmin\Plugins\Loader $this->loader
-         */
-        $loader = $event->getSubject();
+		/**
+		 * @var \MyAdmin\Plugins\Loader $this->loader
+		 */
+		$loader = $event->getSubject();
 		$loader->add_page_requirement('modernbill_client', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill_client.php');
 		$loader->add_page_requirement('modernbill_invoice', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill_invoice.php');
 		$loader->add_page_requirement('modernbill_invoices', '/../vendor/detain/myadmin-modernbill-plugin/src/modernbill_invoices.php');
@@ -77,12 +77,12 @@ class Plugin
 	/**
 	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
 	 */
-    public static function getSettings(GenericEvent $event)
-    {
-        /**
-         * @var \MyAdmin\Settings $settings
-         **/
-        $settings = $event->getSubject();
+	public static function getSettings(GenericEvent $event)
+	{
+		/**
+		 * @var \MyAdmin\Settings $settings
+		 **/
+		$settings = $event->getSubject();
 		$settings->add_radio_setting(_('Billing'), _('ModernBill'), 'paypal_enable', _('Enable ModernBill'), _('Enable ModernBill'), PAYPAL_ENABLE, [true, false], ['Enabled', 'Disabled']);
 		$settings->add_radio_setting(_('Billing'), _('ModernBill'), 'paypal_digitalgoods_enable', _('Enable Digital Goods'), _('Enable Digital Goods'), PAYPAL_DIGITALGOODS_ENABLE, [true, false], ['Enabled', 'Disabled']);
 		$settings->add_text_setting(_('Billing'), _('ModernBill'), 'paypal_email', _('Login').' / '._('Email'), _('Login').' / '._('Email'), (defined('PAYPAL_EMAIL') ? PAYPAL_EMAIL : ''));
