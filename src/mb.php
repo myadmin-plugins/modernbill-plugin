@@ -250,7 +250,7 @@ function return_enckey()
     $ek_hash = str_replace('-----BEGIN LEKHASH-----', '', $ek_hash);
     $ek_hash = str_replace('-----END LEKHASH-----', '', $ek_hash);
     $ek_hash = preg_replace("'(\r|\n)'", '', $ek_hash);
-    list($md5data, $keydata) = explode(':', $ek_hash);
+    [$md5data, $keydata] = explode(':', $ek_hash);
     if ($md5data != md5($keydata.$lek_pw)) {
         return null;
     }
@@ -268,13 +268,13 @@ function decode_key($keydata)
     $keydata = str_replace('-----BEGIN LICENSE-----', '', $keydata);
     $keydata = str_replace('-----END LICENSE-----', '', $keydata);
     $keydata = preg_replace("'(\r|\n)'", '', $keydata);
-    list($md5data, $keydata) = explode('|', $keydata);
+    [$md5data, $keydata] = explode('|', $keydata);
     if ($md5data != md5($keydata.base64_encode($pwd).$pwd)) {
         return -1;
     }
     $keydata = base64_decode($keydata);
     $keydata = encrpyt(base64_encode($pwd).$pwd, $keydata, 1, 1);
-    list($keydata, $md5data) = explode(':', $keydata);
+    [$keydata, $md5data] = explode(':', $keydata);
     if ($md5data != md5($keydata)) {
         return -1;
     }
@@ -290,7 +290,7 @@ function decode_key1($keydata)
 {
     $keydata = str_replace(['-----BEGIN LICENSE-----', '-----END LICENSE-----'], ['', ''], $keydata);
     $keydata = implode('', mb_split("\n", $keydata));
-    list($md5data1, $keydata1) = explode('|', $keydata);
+    [$md5data1, $keydata1] = explode('|', $keydata);
     $keydata2 = str_replace($md5data1.'|'.$keydata1.'|', '', $keydata);
     $obj = new mblg(implode(
         [
@@ -501,7 +501,7 @@ function dcc($client_id, $encryption_key, $md5 = false)
         exit();
     }
     $sql = 'SELECT client_stamp,billing_cc_num FROM client_info WHERE client_id = '.$client_id;
-    list($client_stamp, $billing_cc_num) = adodb_one_array($sql);
+    [$client_stamp, $billing_cc_num] = adodb_one_array($sql);
     global $enc_type;
     if ($enc_type == 'tripleDES') {
         $billing_cc_num = urldecode($billing_cc_num);
@@ -537,7 +537,7 @@ function ecc($client_id, $encryption_key = null, $billing_cc_num, $client_stamp 
     }
     if ($client_stamp) {
         $sql = 'SELECT client_stamp FROM client_info WHERE client_id = '.$client_id;
-        list($client_stamp) = adodb_one_array($sql);
+        [$client_stamp] = adodb_one_array($sql);
     }
     if ($_PAYMENTS['lek_on']) {
         $encryption_key = return_enckey();
