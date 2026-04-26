@@ -10,14 +10,14 @@
     {
         page_title('ModernBill Client Information');
         $db = get_module_db('mb');
-        $data = $GLOBALS['tf']->accounts->data;
+        $data = \MyAdmin\App::accounts()->data;
         $table = new TFTable();
         function_requirements('has_acl');
-        if ($GLOBALS['tf']->ima == 'admin' && has_acl('client_billing')) {
+        if (\MyAdmin\App::ima() == 'admin' && has_acl('client_billing')) {
             add_js('tablesorter');
-            if (isset($GLOBALS['tf']->variables->request['id'])) {
+            if (isset(\MyAdmin\App::variables()->request['id'])) {
                 function_requirements('get_modernbill_client_by_id');
-                $client = get_modernbill_client_by_id($GLOBALS['tf']->variables->request['id']);
+                $client = get_modernbill_client_by_id(\MyAdmin\App::variables()->request['id']);
             } else {
                 function_requirements('get_modernbill_clients');
                 $clients = get_modernbill_clients(

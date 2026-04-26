@@ -80,9 +80,9 @@
     function get_modernbill_invoices()
     {
         $db = get_module_db('mb');
-        $data = $GLOBALS['tf']->accounts->data;
+        $data = \MyAdmin\App::accounts()->data;
         function_requirements('has_acl');
-        if ($GLOBALS['tf']->ima == 'admin' && has_acl('client_billing')) {
+        if (\MyAdmin\App::ima() == 'admin' && has_acl('client_billing')) {
             $query = 'SELECT client_info.client_email
 	 , client_invoice.client_id
 	 , client_invoice.invoice_id
@@ -133,9 +133,9 @@ client_info.client_email='" . $db->real_escape($data['account_lid']) . "'";
     function get_modernbill_packages()
     {
         $db = get_module_db('mb');
-        $data = $GLOBALS['tf']->accounts->data;
+        $data = \MyAdmin\App::accounts()->data;
         function_requirements('has_acl');
-        if ($GLOBALS['tf']->ima == 'admin' && has_acl('client_billing')) {
+        if (\MyAdmin\App::ima() == 'admin' && has_acl('client_billing')) {
             $query = 'SELECT client_email
 	 , client_package.client_id
 	 , pack_name

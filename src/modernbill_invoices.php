@@ -13,7 +13,7 @@
         add_output(render_form('modernbill_invoice_list'));
         return;
         $db = get_module_db('mb');
-        $data = $GLOBALS['tf']->accounts->data;
+        $data = \MyAdmin\App::accounts()->data;
         $table = new TFTable();
         $invoices = get_modernbill_invoices();
         $values = [
@@ -40,7 +40,7 @@
                 $invoice['invoice_date_due'] = date('Y-m-d', $invoice['invoice_date_due']);
                 $invoice['invoice_date_paid'] = date('Y-m-d', $invoice['invoice_date_paid']);
                 function_requirements('has_acl');
-                if ($GLOBALS['tf']->ima != 'admin' || !has_acl('client_billing')) {
+                if (\MyAdmin\App::ima() != 'admin' || !has_acl('client_billing')) {
                     unset($invoice['client_email']);
                 } else {
                     $invoice['client_email'] = $table->make_link('choice=none.modernbill_client&amp;id='.$invoice['client_id'], $invoice['client_email']);

@@ -18,7 +18,7 @@
             'cp_comments' => 'Comments',
             'domain' => 'Domain'
         ];
-        $data = $GLOBALS['tf']->accounts->data;
+        $data = \MyAdmin\App::accounts()->data;
         $table = new TFTable();
         function_requirements('get_modernbill_packages');
         $packages = get_modernbill_packages();
@@ -31,7 +31,7 @@
             $smarty->assign('textextraction', "'complex'");
             $title = false;
             foreach ($packages as $package) {
-                if ($GLOBALS['tf']->ima != 'admin' || !has_acl('client_billing')) {
+                if (\MyAdmin\App::ima() != 'admin' || !has_acl('client_billing')) {
                     unset($package['client_email']);
                 } else {
                     $package['client_email'] = $table->make_link('choice=none.modernbill_client&amp;client_email='.$package['client_email'], $package['client_email']);

@@ -3,10 +3,10 @@
     function modernbill_invoice()
     {
         $db = get_module_db('mb');
-        $invoice = (int)$GLOBALS['tf']->variables->request['id'];
-        $data = $GLOBALS['tf']->accounts->data;
+        $invoice = (int)\MyAdmin\App::variables()->request['id'];
+        $data = \MyAdmin\App::accounts()->data;
         function_requirements('has_acl');
-        if ($GLOBALS['tf']->ima == 'admin' && has_acl('client_billing')) {
+        if (\MyAdmin\App::ima() == 'admin' && has_acl('client_billing')) {
             $db->query("select * from client_invoice left join client_info on client_invoice.client_id=client_info.client_id where invoice_id=$invoice");
         } else {
             $db->query("select * from client_invoice left join client_info on client_invoice.client_id=client_info.client_id where invoice_id=$invoice and  client_info.client_email='" . $db->real_escape($data['account_lid']) . "'");
