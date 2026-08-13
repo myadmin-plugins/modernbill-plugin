@@ -1,6 +1,6 @@
 ---
 name: plugin-hook
-description: Adds or modifies Symfony EventDispatcher hooks in src/Plugin.php. Covers getHooks() map entries, add_page_requirement and add_requirement calls with vendor paths, and static method signatures accepting GenericEvent. Use when user says 'add hook', 'register page', 'add requirement', or modifies Plugin.php. Do NOT use for non-plugin class files or page handler files in src/*.php. NOTE: for a plugin's contract/behavioral tests (tests/ContractTest.php, the shared harness, composer myadmin:scaffold-tests) use the plugin-contract-tests skill instead — this skill's reflection-only guidance predates that harness.
+description: Adds or modifies Symfony EventDispatcher hooks in src/Plugin.php. Covers getHooks() map entries, add_page_requirement and add_requirement calls with vendor paths, and static method signatures accepting GenericEvent. Use when user says 'add hook', 'register page', 'add requirement', or modifies Plugin.php. Do NOT use for non-plugin class files or page handler files in src/*.php. For a plugin's contract or behavioral tests (tests/ContractTest.php, the shared harness, composer myadmin:scaffold-tests) use the plugin-contract-tests skill instead — this skill's reflection-only guidance predates that harness.
 ---
 <!-- myadmin-contract-harness-notice -->
 > ### ⚠️ Read this before the rest of the file

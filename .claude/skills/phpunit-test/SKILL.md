@@ -1,6 +1,6 @@
 ---
 name: phpunit-test
-description: Writes PHPUnit tests following patterns in tests/PluginTest.php, tests/ModernBillFunctionsTest.php, and tests/PageFilesTest.php. Covers file-existence assertions, function-declaration string checks, and ReflectionClass method inspection. Use when user says 'add test', 'write tests for', or adds files to tests/. Do NOT use for integration tests requiring a live DB or for testing runtime behavior that depends on global state ($GLOBALS['tf'], get_module_db). NOTE: for a plugin's contract/behavioral tests (tests/ContractTest.php, the shared harness, composer myadmin:scaffold-tests) use the plugin-contract-tests skill instead — this skill's reflection-only guidance predates that harness.
+description: Writes PHPUnit tests following patterns in tests/PluginTest.php, tests/ModernBillFunctionsTest.php, and tests/PageFilesTest.php. Covers file-existence assertions, function-declaration string checks, and ReflectionClass method inspection. Use when user says 'add test', 'write tests for', or adds files to tests/. Do NOT use for integration tests requiring a live DB or for testing runtime behavior that depends on global state ($GLOBALS['tf'], get_module_db). For a plugin's contract or behavioral tests (tests/ContractTest.php, the shared harness, composer myadmin:scaffold-tests) use the plugin-contract-tests skill instead — this skill's reflection-only guidance predates that harness.
 ---
 <!-- myadmin-contract-harness-notice -->
 > ### ⚠️ Read this before the rest of the file
